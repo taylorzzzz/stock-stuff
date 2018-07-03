@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,400");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
+  background: #100E3B; }
+
+.container {
+  margin: 20px; }
+
+.header {
+  color: #f0424e;
+  font-size: 80px;
+  text-align: center; }
+
+.ticker__search {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 200; }
+  .ticker__search--input {
+    margin: 20px;
+    outline: none;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #f0424e;
+    font-size: 20px;
+    font-weight: 200;
+    background: none;
+    color: #fff; }
+  .ticker__search--label {
+    color: #f0424e;
+    font-size: 20px; }
+  .ticker__search--btn {
+    font-family: inherit;
+    border: none;
+    background: #f0424e;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 20px;
+    line-height: 1em;
+    font-weight: inherit;
+    cursor: pointer;
+    transition: .4s background;
+    box-shadow: 2px 2px 2px rgba(22, 22, 22, 0.15);
+    border-radius: 2px;
+    outline: none; }
+    .ticker__search--btn:hover {
+      background: #f8a1a7; }
+
+.stock-info {
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff; }
+  .stock-info > div {
+    display: flex; }
+  .stock-info label {
+    margin-right: 20px;
+    font-weight: 200;
+    color: #716cdc; }
+
+.graphs.hidden {
+  display: none; }
+
+.graphs {
+  display: block; }
+  .graphs .graph-container--2-col {
+    display: block; }
+  .graphs--one svg.line-chart {
+    width: 50%;
+    min-width: 400px;
+    height: 200px;
+    stroke: #fff; }
+    .graphs--one svg.line-chart .axis line,
+    .graphs--one svg.line-chart .axis path {
+      stroke: #fff; }
+    .graphs--one svg.line-chart path {
+      stroke: #716cdc; }
+  .graphs--two svg.avg-after {
+    width: 50%;
+    min-width: 400px;
+    height: 200px; }
+    .graphs--two svg.avg-after rect.pos-avg {
+      fill: #69FF8D; }
+    .graphs--two svg.avg-after rect.neg-avg {
+      fill: #FF003B; }
+    .graphs--two svg.avg-after .axis line,
+    .graphs--two svg.avg-after .axis path {
+      stroke: #fff; }
+    .graphs--two svg.avg-after .mid-axis {
+      stroke: #716cdc; }
+  .graphs--three svg.weekday-avg {
+    width: 50%;
+    min-width: 400px;
+    height: 200px; }
+    .graphs--three svg.weekday-avg rect.pos-avg {
+      fill: #69FF8D; }
+    .graphs--three svg.weekday-avg rect.neg-avg {
+      fill: #FF003B; }
+    .graphs--three svg.weekday-avg .axis line,
+    .graphs--three svg.weekday-avg .axis path {
+      stroke: #fff; }
+    .graphs--three svg.weekday-avg .mid-axis {
+      stroke: #716cdc; }
+  .graphs--four svg.abs-weekday-avg {
+    width: 50%;
+    min-width: 400px;
+    height: 200px; }
+    .graphs--four svg.abs-weekday-avg rect.bar {
+      fill: #69FF8D; }
+    .graphs--four svg.abs-weekday-avg .axis line,
+    .graphs--four svg.abs-weekday-avg .axis path {
+      stroke: #fff; }
+    .graphs--four svg.abs-weekday-avg .mid-axis {
+      stroke: #716cdc; }
+  .graphs--five svg.weekday-after-hrs-avg {
+    width: 50%;
+    min-width: 400px;
+    height: 200px; }
+    .graphs--five svg.weekday-after-hrs-avg rect.pos-avg {
+      fill: #69FF8D; }
+    .graphs--five svg.weekday-after-hrs-avg rect.neg-avg {
+      fill: #FF003B; }
+    .graphs--five svg.weekday-after-hrs-avg .axis line,
+    .graphs--five svg.weekday-after-hrs-avg .axis path {
+      stroke: #fff; }
+    .graphs--five svg.weekday-after-hrs-avg .mid-axis {
+      stroke: #716cdc; }
+  .graphs--six svg.weekday-abs-after-hrs-avg {
+    width: 50%;
+    min-width: 400px;
+    height: 200px; }
+    .graphs--six svg.weekday-abs-after-hrs-avg rect.bar {
+      fill: #69FF8D; }
+    .graphs--six svg.weekday-abs-after-hrs-avg .axis line,
+    .graphs--six svg.weekday-abs-after-hrs-avg .axis path {
+      stroke: #fff; }
+    .graphs--six svg.weekday-abs-after-hrs-avg .mid-axis {
+      stroke: #716cdc; }
+  .graphs--seven svg.daily-pct-change {
+    width: 50%;
+    min-width: 400px;
+    height: 200px; }
+    .graphs--seven svg.daily-pct-change .axis line,
+    .graphs--seven svg.daily-pct-change .axis path {
+      stroke: #fff; }
+    .graphs--seven svg.daily-pct-change path {
+      stroke: #716cdc; }
+  .graphs--eight svg.daily-pct-change--bar {
+    width: 50%;
+    min-width: 400px;
+    height: 200px; }
+    .graphs--eight svg.daily-pct-change--bar rect.pos-avg {
+      fill: #69FF8D; }
+    .graphs--eight svg.daily-pct-change--bar rect.neg-avg {
+      fill: #FF003B; }
+    .graphs--eight svg.daily-pct-change--bar .axis line,
+    .graphs--eight svg.daily-pct-change--bar .axis path {
+      stroke: #fff; }
+    .graphs--eight svg.daily-pct-change--bar .mid-axis {
+      stroke: #716cdc; }
+  .graphs--one, .graphs--two, .graphs--three, .graphs--four, .graphs--five, .graphs--six, .graphs--seven, .graphs--eight {
+    border: 1px solid #fff;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .graphs--one .graph-title, .graphs--two .graph-title, .graphs--three .graph-title, .graphs--four .graph-title, .graphs--five .graph-title, .graphs--six .graph-title, .graphs--seven .graph-title, .graphs--eight .graph-title {
+      color: #716cdc;
+      font-size: 20px;
+      margin-bottom: 20px; }
+    .graphs--one .graph-label, .graphs--two .graph-label, .graphs--three .graph-label, .graphs--four .graph-label, .graphs--five .graph-label, .graphs--six .graph-label, .graphs--seven .graph-label, .graphs--eight .graph-label {
+      fill: #f0424e; }
+
+text {
+  letter-spacing: 1.5px;
+  stroke: none;
+  fill: #fff;
+  font-size: 12px; }

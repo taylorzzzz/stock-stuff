@@ -1,0 +1,133 @@
+<html>
+    
+    <head>
+
+        <title>Stock App</title>
+
+        <link href="build/css/style.css" rel="stylesheet" />
+
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <h1 class="header">STOCK MARKET</h1>
+
+            <div class="ticker__search">
+
+                <label class="ticker__search--label"for="ticker">Ticker</label>
+
+                <input type="text" class="ticker__search--input" value="GOOG">
+
+                <button class="ticker__search--btn">Search</button>
+
+                <div class="ticker__search--results"></div>
+
+            </div>
+        <!--
+            <div class="stock-info">
+
+                <div class="stock-info__name">
+                    <label>Stock:</label>
+                    <div class="stock-info__name--value"></div>
+                </div>
+
+                <div class="stock-info__up">
+                    <label>Number of Up Days:</label>
+                    <div class="stock-info__up--value"></div>
+                </div>
+
+                <div class="stock-info__down">
+                    <label>Number of Down Days:</label>
+                    <div class="stock-info__down--value"></div>
+                </div>
+
+                <div class="stock-info__up-avg">
+                    <label>AVG Change (%) After Up Days:</label>
+                    <div class="stock-info__up-avg--value"></div>
+                </div>
+
+                <div class="stock-info__down-avg">
+                    <label>AVG Change (%) After Down Days:</label>
+                    <div class="stock-info__down-avg--value"></div>
+                </div>
+
+                <div class="stock-info__time-period">
+                    <label>Time Period:</label>
+                    <div class="stock-info__time-period--value"></div>
+                </div>
+
+
+            </div>
+        -->
+            <div class="graphs">
+
+                <div class="graphs--eight">
+
+                    <svg class="daily-pct-change--bar"></svg>
+
+                </div>
+
+                <div class="graphs--seven">
+
+                    <svg class="daily-pct-change"></svg>
+
+                </div>
+
+                <div class="graphs--one">
+
+                    <svg class="line-chart"></svg>
+
+                </div>   
+
+                <div class="graph-container--2-col">
+
+                    <div class="graphs--two">
+                            
+                        <h3 class="graph-title">AVG. Price After Up/Down Days</h3>
+
+                        <svg class="avg-after"></svg>
+
+                    </div>
+
+                    <div class="graphs--three">
+
+                        <h3 class="graph-title">AVG. Weekday Price Change</h3>
+    
+                        <svg class="weekday-avg"></svg>
+    
+                    </div>
+
+                </div>
+
+                <div class="graphs--four">
+
+                    <svg class="abs-weekday-avg"></svg>
+
+                </div>
+
+                <div class="graphs--five">
+
+                    <svg class="weekday-after-hrs-avg"></svg>
+
+                </div>
+
+                <div class="graphs--six">
+
+                    <svg class="weekday-abs-after-hrs-avg"></svg>
+
+                </div>
+
+                
+
+            </div>
+
+        </div>
+        
+
+        <script src="build/js/bundle.js"></script>
+
+    </body>
+
+</html>

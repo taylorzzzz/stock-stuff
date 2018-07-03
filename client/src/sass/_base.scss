@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,400');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;
+    background: $color-bg;
+}
+
+.container {
+    margin: 20px;
+}
+
+.header {
+    color: $color-primary;
+    font-size: 80px;
+    text-align: center;
+}
+
+.ticker__search {
+    //background: darken($color-white, 10%);
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 200;
+
+    &--input {
+        margin: 20px;
+        outline: none;
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid rgba($color-primary, 1);
+        font-size: 20px;
+        font-weight: 200;
+        background: none;
+        color: $color-white;
+        
+    }
+
+    &--label {
+        color: $color-primary;
+        font-size: 20px;
+    }
+
+    &--btn {
+        font-family: inherit;
+        border: none;
+        background: $color-primary;
+        color: $color-white;
+        padding: 5px 10px;
+        font-size: 20px;
+        line-height: 1em;
+        font-weight: inherit;
+        cursor: pointer;
+        transition: .4s background;
+        box-shadow: 2px 2px 2px rgba($color-black, .15);
+        border-radius: 2px;
+        outline: none;
+
+        &:hover {
+            background: lighten($color-primary, 20%);
+        }
+    }
+}
+
+.stock-info {
+    font-size: 20px;
+    font-weight: 400;
+    color: $color-white;
+
+    > div {
+        display: flex;
+    }
+
+    label {
+        margin-right: 20px;
+        font-weight: 200;
+        color: lighten($color-bg, 50%);
+    }
+
+}
+
+.graphs.hidden {
+    display: none;
+}
+.graphs {
+    display: block;
+
+    .graph-container {
+        &--2-col {
+            display: block;
+        }
+    }
+    &--one {
+
+        svg.line-chart {
+            width: 50%;
+            min-width: 400px;
+            height: 200px;
+            stroke: $color-white;
+    
+            .axis line,
+            .axis path {
+               stroke: $color-white;
+            }
+    
+            path {
+                stroke: lighten($color-bg, 50%);
+            }
+            
+        }
+
+    }
+
+    &--two {
+
+        svg.avg-after {
+            width: 50%;
+            min-width: 400px;
+            height: 200px;
+
+            rect {
+                &.pos-avg {
+                    fill: $color-green;
+                }
+                &.neg-avg {
+                    fill: $color-red;
+                }
+            }
+
+            .axis line,
+            .axis path {
+               stroke: $color-white;
+            }
+
+            .mid-axis {
+                stroke: lighten($color-bg, 50%);
+            }
+        }
+
+    }
+
+    &--three {
+
+        svg.weekday-avg {
+            width: 50%;
+            min-width: 400px;
+            height: 200px;
+
+            rect {
+                &.pos-avg {
+                    fill: $color-green;
+                }
+                &.neg-avg {
+                    fill: $color-red;
+                }
+            }
+
+            .axis line,
+            .axis path {
+               stroke: $color-white;
+            }
+
+            .mid-axis {
+                stroke: lighten($color-bg, 50%);
+            }
+        }
+
+    }
+
+    &--four {
+        svg.abs-weekday-avg {
+            width: 50%;
+            min-width: 400px;
+            height: 200px;
+
+            rect.bar {
+                fill: $color-green;
+            }
+
+            .axis line,
+            .axis path {
+               stroke: $color-white;
+            }
+
+            .mid-axis {
+                stroke: lighten($color-bg, 50%);
+            }
+        }
+    }   
+
+    &--five {
+        svg.weekday-after-hrs-avg {
+            width: 50%;
+            min-width: 400px;
+            height: 200px;
+
+            rect {
+                &.pos-avg {
+                    fill: $color-green;
+                }
+                &.neg-avg {
+                    fill: $color-red;
+                }
+            }
+
+            .axis line,
+            .axis path {
+               stroke: $color-white;
+            }
+
+            .mid-axis {
+                stroke: lighten($color-bg, 50%);
+            }
+        }
+    }
+    &--six {
+
+        svg.weekday-abs-after-hrs-avg {
+            width: 50%;
+            min-width: 400px;
+            height: 200px;
+
+            rect.bar {
+                fill: $color-green;
+            }
+
+            .axis line,
+            .axis path {
+               stroke: $color-white;
+            }
+
+            .mid-axis {
+                stroke: lighten($color-bg, 50%);
+            }
+        }
+    }
+    &--seven {
+
+        svg.daily-pct-change {
+            width: 50%;
+            min-width: 400px;
+            height: 200px;
+    
+            .axis line,
+            .axis path {
+               stroke: $color-white;
+            }
+    
+            path {
+                stroke: lighten($color-bg, 50%);
+            }
+            
+        }
+
+    }
+
+    &--eight {
+
+        svg.daily-pct-change--bar {
+            width: 50%;
+            min-width: 400px;
+            height: 200px;
+
+            rect {
+                &.pos-avg {
+                    fill: $color-green;
+                }
+                &.neg-avg {
+                    fill: $color-red;
+                }
+            }
+
+            .axis line,
+            .axis path {
+               stroke: $color-white;
+            }
+
+            .mid-axis {
+                stroke: lighten($color-bg, 50%);
+            }
+        }
+    }
+
+    &--one,
+    &--two,
+    &--three,
+    &--four,
+    &--five,
+    &--six,
+    &--seven,
+    &--eight {
+        border: 1px solid $color-white;
+        margin: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .graph-title {
+            color: lighten($color-bg, 50%);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .graph-label {
+            fill: $color-primary;
+        }
+    }
+
+
+    
+
+}
+
+text {
+    letter-spacing: 1.5px;
+    stroke: none;
+    fill: $color-white;
+    font-size: 12px;
+}
+
+@media screen and (min-width: 900px) {
+    
+}

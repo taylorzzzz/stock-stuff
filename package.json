@@ -1,0 +1,31 @@
+{
+  "name": "stocks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon app.js",
+    "build": "webpack --progress -p",
+    "watch": "webpack --progress --watch",
+    "compile:sass": "node-sass -w client/src/sass/main.scss client/build/css/style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "d3": "^5.5.0",
+    "d3-scale": "^2.1.0",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "node-sass": "^4.9.0",
+    "nodemon": "^1.17.5",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8"
+  }
+}
