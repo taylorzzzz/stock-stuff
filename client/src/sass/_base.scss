@@ -12,16 +12,11 @@ body {
     background: $color-bg;
 }
 
-.container {
-    margin: 20px;
-}
-
 .header {
     color: $color-primary;
     font-size: 80px;
     text-align: center;
 }
-
 .ticker__search {
     //background: darken($color-white, 10%);
     padding: 50px;
@@ -86,238 +81,94 @@ body {
 
 }
 
-.graphs.hidden {
-    display: none;
-}
-.graphs {
-    display: block;
 
-    .graph-container {
-        &--2-col {
-            display: block;
-        }
-    }
-    &--one {
+.header {grid-area: header}
+.search {grid-area: search}
+.graphs {grid-area: graphs}
+.chart {grid-area: chart}
 
-        svg.line-chart {
-            width: 50%;
-            min-width: 400px;
-            height: 200px;
-            stroke: $color-white;
-    
-            .axis line,
-            .axis path {
-               stroke: $color-white;
-            }
-    
-            path {
-                stroke: lighten($color-bg, 50%);
-            }
-            
-        }
+.container {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-areas:
+     "header"
+     "search"
+     "graphs";
 
+    &.hidden {
+        display: none;
     }
 
-    &--two {
+    .graphs {
+        display: grid;
+        grid-template-areas: 
+            "chart_1"
+            "chart_2"
+            "chart_3"
+            "chart_4"
+            "chart_5"
+            "chart_6"
+            "chart_7"
+            "chart_8";
 
-        svg.avg-after {
-            width: 50%;
-            min-width: 400px;
-            height: 200px;
+        &.hidden { display: none }
 
-            rect {
-                &.pos-avg {
-                    fill: $color-green;
-                }
-                &.neg-avg {
-                    fill: $color-red;
-                }
-            }
-
-            .axis line,
-            .axis path {
-               stroke: $color-white;
-            }
-
-            .mid-axis {
-                stroke: lighten($color-bg, 50%);
-            }
-        }
-
-    }
-
-    &--three {
-
-        svg.weekday-avg {
-            width: 50%;
-            min-width: 400px;
-            height: 200px;
-
-            rect {
-                &.pos-avg {
-                    fill: $color-green;
-                }
-                &.neg-avg {
-                    fill: $color-red;
-                }
-            }
+        chart_1 { grid-area: chart_1}
+        chart_2 { grid-area: chart_2}
+        chart_3 { grid-area: chart_3}
+        chart_4 { grid-area: chart_4}
+        chart_5 { grid-area: chart_5}
+        chart_6 { grid-area: chart_6}
+        chart_7 { grid-area: chart_7}
+        chart_8 { grid-area: chart_8}
+        
+        svg {
+            //border: 1px solid red;
+            margin: 50px auto;
+            box-sizing: border-box;
+            width: 90%;
+            min-height: 200px;
 
             .axis line,
             .axis path {
-               stroke: $color-white;
-            }
-
-            .mid-axis {
-                stroke: lighten($color-bg, 50%);
-            }
-        }
-
-    }
-
-    &--four {
-        svg.abs-weekday-avg {
-            width: 50%;
-            min-width: 400px;
-            height: 200px;
-
-            rect.bar {
-                fill: $color-green;
-            }
-
-            .axis line,
-            .axis path {
-               stroke: $color-white;
-            }
-
-            .mid-axis {
-                stroke: lighten($color-bg, 50%);
-            }
-        }
-    }   
-
-    &--five {
-        svg.weekday-after-hrs-avg {
-            width: 50%;
-            min-width: 400px;
-            height: 200px;
-
-            rect {
-                &.pos-avg {
-                    fill: $color-green;
-                }
-                &.neg-avg {
-                    fill: $color-red;
-                }
-            }
-
-            .axis line,
-            .axis path {
-               stroke: $color-white;
-            }
-
-            .mid-axis {
-                stroke: lighten($color-bg, 50%);
-            }
-        }
-    }
-    &--six {
-
-        svg.weekday-abs-after-hrs-avg {
-            width: 50%;
-            min-width: 400px;
-            height: 200px;
-
-            rect.bar {
-                fill: $color-green;
-            }
-
-            .axis line,
-            .axis path {
-               stroke: $color-white;
-            }
-
-            .mid-axis {
-                stroke: lighten($color-bg, 50%);
-            }
-        }
-    }
-    &--seven {
-
-        svg.daily-pct-change {
-            width: 50%;
-            min-width: 400px;
-            height: 200px;
-    
-            .axis line,
-            .axis path {
-               stroke: $color-white;
+                stroke: $color-white;
             }
     
-            path {
-                stroke: lighten($color-bg, 50%);
-            }
-            
-        }
-
-    }
-
-    &--eight {
-
-        svg.daily-pct-change--bar {
-            width: 50%;
-            min-width: 400px;
-            height: 200px;
-
-            rect {
-                &.pos-avg {
-                    fill: $color-green;
-                }
-                &.neg-avg {
-                    fill: $color-red;
-                }
-            }
-
-            .axis line,
-            .axis path {
-               stroke: $color-white;
-            }
-
             .mid-axis {
                 stroke: lighten($color-bg, 50%);
             }
-        }
-    }
-
-    &--one,
-    &--two,
-    &--three,
-    &--four,
-    &--five,
-    &--six,
-    &--seven,
-    &--eight {
-        border: 1px solid $color-white;
-        margin: 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .graph-title {
-            color: lighten($color-bg, 50%);
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
-        .graph-label {
-            fill: $color-primary;
-        }
-    }
-
-
     
+            &.line-chart {
+                path {
+                    stroke: lighten($color-bg, 50%);
+                }
+            }
+    
+            &.bar-chart {
+    
+                rect {
+                    &.bar {fill: $color-green}
+                    &.pos-avg {fill: $color-green}
+                    &.neg-avg {fill: $color-red}
 
+                    &:hover {
+                        fill: lighten($color-bg, 50%);
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
+.tooltip {
+    background: rgba($color-white,.75);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.graph-label {
+    fill: $color-primary;
+}
 text {
     letter-spacing: 1.5px;
     stroke: none;
@@ -325,6 +176,14 @@ text {
     font-size: 12px;
 }
 
-@media screen and (min-width: 900px) {
-    
+@media only screen and (min-width: 768px) {
+
+    .container .graphs {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "chart_1" "chart_2"
+            "chart_3" "chart_4"
+            "chart_5" "chart_6"
+            "chart_7" "chart_8";
+    }
 }

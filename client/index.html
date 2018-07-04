@@ -14,7 +14,7 @@
 
             <h1 class="header">STOCK MARKET</h1>
 
-            <div class="ticker__search">
+            <div class="ticker__search search">
 
                 <label class="ticker__search--label"for="ticker">Ticker</label>
 
@@ -61,68 +61,25 @@
 
             </div>
         -->
-            <div class="graphs">
+            <div class="graphs hidden">
 
-                <div class="graphs--eight">
+                <svg class="daily-pct-change--bar bar-chart chart_1"></svg>
+                <!--
+                <svg class="daily-pct-change line-chart chart_2"></svg>
+                -->
+                <svg class="daily-price-chart line-chart chart_3"></svg>
 
-                    <svg class="daily-pct-change--bar"></svg>
+                <svg class="avg-after bar-chart chart_4"></svg>
 
-                </div>
+                <svg class="weekday-avg bar-chart chart_5"></svg>
 
-                <div class="graphs--seven">
+                <svg class="abs-weekday-avg bar-chart chart_6"></svg>
 
-                    <svg class="daily-pct-change"></svg>
+                <svg class="weekday-after-hrs-avg bar-chart chart_7"></svg>
 
-                </div>
-
-                <div class="graphs--one">
-
-                    <svg class="line-chart"></svg>
-
-                </div>   
-
-                <div class="graph-container--2-col">
-
-                    <div class="graphs--two">
-                            
-                        <h3 class="graph-title">AVG. Price After Up/Down Days</h3>
-
-                        <svg class="avg-after"></svg>
-
-                    </div>
-
-                    <div class="graphs--three">
-
-                        <h3 class="graph-title">AVG. Weekday Price Change</h3>
-    
-                        <svg class="weekday-avg"></svg>
-    
-                    </div>
-
-                </div>
-
-                <div class="graphs--four">
-
-                    <svg class="abs-weekday-avg"></svg>
-
-                </div>
-
-                <div class="graphs--five">
-
-                    <svg class="weekday-after-hrs-avg"></svg>
-
-                </div>
-
-                <div class="graphs--six">
-
-                    <svg class="weekday-abs-after-hrs-avg"></svg>
-
-                </div>
-
-                
+                <svg class="weekday-abs-after-hrs-avg bar-chart chart_8"></svg>
 
             </div>
-
         </div>
         
 

@@ -8,6 +8,15 @@ module.exports = class Stock {
         
     }
 
+    clearGraphs() {
+        // Clear any preexisting charts after user loads up a new stock.
+        d3.selectAll("svg > *").remove();
+        
+        // Also remove the hidden class which hides the empty graphs 
+        // when the user first comes to the page
+        document.querySelector('.graphs').classList.remove('hidden');
+    }
+
     getStats(data) {
         
         const days = data.data;
@@ -192,13 +201,8 @@ module.exports = class Stock {
 
     graphStockPrice() {
 
-        // Clear any preexisting charts after user loads up a new stock.
-        d3.selectAll("svg > *").remove();
-
-        document.querySelector('.graphs').classList.remove('hidden');
-
         // Now start
-        const svg = d3.select('.line-chart');
+        const svg = d3.select('.daily-price-chart');
 
         const margin = {top: 20, right: 20, bottom: 50, left: 70},
             g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`),
@@ -276,18 +280,25 @@ module.exports = class Stock {
 
         const xExtent = d3.extent(data, function(d) {return d.value});
         let domain = [-1, 1];
-
-        if (xExtent[0] < -1) {
-            domain[0] = -2;
-            domain[1] = 2;
-        } else if (xExtent[1] > 1) {
-            domain[0] = -2;
-            domain[1] = 2;
+        
+        if (Math.abs(xExtent[0]) > xExtent[1]) {
+            domain[0] = Math.floor(xExtent[0]);
+            domain[1] = Math.ceil(Math.abs(xExtent[0]));
+        } else {
+            domain[0] = Math.floor(-xExtent[1]);
+            domain[1] = Math.ceil(xExtent[1]);
         }
 
         const x = d3.scaleLinear()
                     .domain(domain)
                     .rangeRound([0, width]);
+
+        const tooltip = d3.select("body")
+            .append("div")
+            .attr('class', 'tooltip')
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden");
 
         g.append("g")
             .attr("class", "axis")
@@ -303,7 +314,6 @@ module.exports = class Stock {
             .text("AVG Price Change");
 
         
-
         g.selectAll(".bar")
             .data(data)
             .enter().append("rect")
@@ -322,7 +332,14 @@ module.exports = class Stock {
                 return d.value < 0
                     ? 'neg-avg'
                     : 'pos-avg'
-            });
+            })
+            .on('mouseover', (d) => { 
+                return tooltip.style("visibility", "visible").text(d.value + '%');
+            })
+            .on('mousemove', (d) => { 
+                return tooltip.style("top", `${event.pageY - 30}px`)
+                    .style('left', `${event.pageX + 5}px`);})
+            .on('mouseout', () => {return tooltip.style('visibility', 'hidden');});
         
         g.append("line")
             .attr("x1", x(0))
@@ -361,18 +378,25 @@ module.exports = class Stock {
         
         const xExtent = d3.extent(data, function(d) {return d.avgChange});
         let domain = [-1, 1];
-
-        if (xExtent[0] < -1) {
-            domain[0] = -2;
-            domain[1] = 2;
-        } else if (xExtent[1] > 1) {
-            domain[0] = -2;
-            domain[1] = 2;
+        
+        if (Math.abs(xExtent[0]) > xExtent[1]) {
+            domain[0] = Math.floor(xExtent[0]);
+            domain[1] = Math.ceil(Math.abs(xExtent[0]));
+        } else {
+            domain[0] = Math.floor(-xExtent[1]);
+            domain[1] = Math.ceil(xExtent[1]);
         }
 
         const x = d3.scaleLinear()
             .domain(domain)
             .rangeRound([0, width]);
+
+        const tooltip = d3.select("body")
+            .append("div")
+            .attr('class', 'tooltip')
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden");
 
         g.append("g")
             .attr("class", "axis")
@@ -405,7 +429,15 @@ module.exports = class Stock {
                 return d.avgChange < 0
                     ? 'neg-avg'
                     : 'pos-avg'
-            });
+            })
+            .on('mouseover', (d) => { 
+                    
+                return tooltip.style("visibility", "visible").text(d.avgChange.toFixed(2) + '%');
+            })
+            .on('mousemove', (d) => { 
+                return tooltip.style("top", `${event.pageY - 30}px`)
+                    .style('left', `${event.pageX + 5}px`);})
+            .on('mouseout', () => {return tooltip.style('visibility', 'hidden');});
 
 
         g.append("line")
@@ -460,6 +492,13 @@ module.exports = class Stock {
         const x = d3.scaleLinear()
             .domain(domain)
             .rangeRound([0, width]);
+        
+        const tooltip = d3.select("body")
+            .append("div")
+            .attr('class', 'tooltip')
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden");
 
         g.append("g")
             .attr("class", "axis")
@@ -483,7 +522,15 @@ module.exports = class Stock {
             .attr("height", y.bandwidth())
             .attr("width", function(d) { 
                 return  x(Math.abs(d.avgAbsChange)); 
-            });
+            })
+            .on('mouseover', (d) => { 
+                    
+                return tooltip.style("visibility", "visible").text(d.avgAbsChange.toFixed(2) + '%');
+            })
+            .on('mousemove', (d) => { 
+                return tooltip.style("top", `${event.pageY - 30}px`)
+                    .style('left', `${event.pageX + 5}px`);})
+            .on('mouseout', () => {return tooltip.style('visibility', 'hidden');});
 
         g.append("g")
             .attr("class", "axis")
@@ -508,18 +555,26 @@ module.exports = class Stock {
         
         const xExtent = d3.extent(data, function(d) {return d.avgAfterHrsChange});
         let domain = [-1, 1];
-
-        if (xExtent[0] < -1) {
-            domain[0] = -2;
-            domain[1] = 2;
-        } else if (xExtent[1] > 1) {
-            domain[0] = -2;
-            domain[1] = 2;
+        
+        if (Math.abs(xExtent[0]) > xExtent[1]) {
+            // bigger min then max
+            domain[0] = Math.floor(xExtent[0]);
+            domain[1] = Math.ceil(Math.abs(xExtent[0]));
+        } else {
+            domain[0] = Math.floor(-xExtent[1]);
+            domain[1] = Math.ceil(xExtent[1]);
         }
 
         const x = d3.scaleLinear()
             .domain(domain)
             .rangeRound([0, width]);
+        
+        const tooltip = d3.select("body")
+            .append("div")
+            .attr('class', 'tooltip')
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden");
 
         g.append("g")
             .attr("class", "axis")
@@ -552,7 +607,15 @@ module.exports = class Stock {
                 return d.avgAfterHrsChange < 0
                     ? 'neg-avg'
                     : 'pos-avg'
-            });
+            })
+            .on('mouseover', (d) => { 
+                    
+                return tooltip.style("visibility", "visible").text(d.avgAfterHrsChange.toFixed(2) + '%');
+            })
+            .on('mousemove', (d) => { 
+                return tooltip.style("top", `${event.pageY - 30}px`)
+                    .style('left', `${event.pageX + 5}px`);})
+            .on('mouseout', () => {return tooltip.style('visibility', 'hidden');});
 
 
         g.append("line")
@@ -605,6 +668,14 @@ module.exports = class Stock {
             .domain(domain)
             .rangeRound([0, width]);
 
+        const tooltip = d3.select("body")
+            .append("div")
+            .attr('class', 'tooltip')
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden");
+        
+
         g.append("g")
             .attr("class", "axis")
             .attr("transform", "translate(0," + height + ")")
@@ -627,7 +698,15 @@ module.exports = class Stock {
             .attr("height", y.bandwidth())
             .attr("width", function(d) { 
                 return  x(Math.abs(d.avgAbsAfterHrsChange)); 
-            });
+            })
+            .on('mouseover', (d) => { 
+                    
+                return tooltip.style("visibility", "visible").text(d.avgAbsAfterHrsChange.toFixed(2) + '%');
+            })
+            .on('mousemove', (d) => { 
+                return tooltip.style("top", `${event.pageY - 30}px`)
+                    .style('left', `${event.pageX + 5}px`);})
+            .on('mouseout', () => {return tooltip.style('visibility', 'hidden');});
 
         g.append("g")
             .attr("class", "axis")
@@ -681,14 +760,14 @@ module.exports = class Stock {
 
         g.append("g")
             .attr("class", "axis")
-            .call(d3.axisLeft(y).ticks(5))
+            .call(d3.axisLeft(y).ticks(5).tickFormat(d => d + "%"))
             .append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", -60)
             .attr("x", 0 - height/2)
             .attr("text-anchor", "middle")
             .attr("class", "graph-label")
-            .text("Price Change (%)");
+            .text("Price Change");
 
         g.append("path")
             .datum(this.days)
@@ -733,6 +812,13 @@ module.exports = class Stock {
         const y = d3.scaleLinear()
             .domain(domain)
             .rangeRound([height, 0]);
+
+        const tooltip = d3.select("body")
+            .append("div")
+            .attr('class', 'tooltip')
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden");
         
         g.append("g")
             .attr("class", "axis")
@@ -745,14 +831,14 @@ module.exports = class Stock {
 
         g.append("g")
             .attr("class", "axis")
-            .call(d3.axisLeft(y).ticks(5))
+            .call(d3.axisLeft(y).ticks(5).tickFormat(d => d + "%"))
             .append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", -60)
             .attr("x", 0 - height/2)
             .attr("text-anchor", "middle")
             .attr("class", "graph-label")
-            .text("Daily Price Change (%)");
+            .text("Price Change(%)");
 
         g.selectAll(".bar")
                 .data(this.days)
@@ -772,7 +858,15 @@ module.exports = class Stock {
                     return d.pctChange < 0
                         ? 'neg-avg'
                         : 'pos-avg'
-                });
+                })
+                .on('mouseover', (d) => { 
+                    return tooltip.style("visibility", "visible").text(d.pctChange.toFixed(2) + '%');
+                })
+                .on('mousemove', (d) => { 
+                    return tooltip.style("top", `${event.pageY - 30}px`)
+                        .style('left', `${event.pageX + 5}px`);})
+            
+                .on('mouseout', () => {return tooltip.style('visibility', 'hidden');});
 
 
         g.append("line")
@@ -791,3 +885,7 @@ module.exports = class Stock {
 
 
 }
+
+/*
+    
+*/

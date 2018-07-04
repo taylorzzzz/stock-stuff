@@ -7,10 +7,7 @@
 body {
   font-size: 62.5%;
   font-family: 'Poppins', sans-serif;
-  background: #100E3B; }
-
-.container {
-  margin: 20px; }
+  background: #4a3EaB; }
 
 .header {
   color: #f0424e;
@@ -62,123 +59,83 @@ body {
   .stock-info label {
     margin-right: 20px;
     font-weight: 200;
-    color: #716cdc; }
+    color: #f0eff9; }
 
-.graphs.hidden {
-  display: none; }
+.header {
+  grid-area: header; }
+
+.search {
+  grid-area: search; }
 
 .graphs {
-  display: block; }
-  .graphs .graph-container--2-col {
-    display: block; }
-  .graphs--one svg.line-chart {
-    width: 50%;
-    min-width: 400px;
-    height: 200px;
-    stroke: #fff; }
-    .graphs--one svg.line-chart .axis line,
-    .graphs--one svg.line-chart .axis path {
-      stroke: #fff; }
-    .graphs--one svg.line-chart path {
-      stroke: #716cdc; }
-  .graphs--two svg.avg-after {
-    width: 50%;
-    min-width: 400px;
-    height: 200px; }
-    .graphs--two svg.avg-after rect.pos-avg {
-      fill: #69FF8D; }
-    .graphs--two svg.avg-after rect.neg-avg {
-      fill: #FF003B; }
-    .graphs--two svg.avg-after .axis line,
-    .graphs--two svg.avg-after .axis path {
-      stroke: #fff; }
-    .graphs--two svg.avg-after .mid-axis {
-      stroke: #716cdc; }
-  .graphs--three svg.weekday-avg {
-    width: 50%;
-    min-width: 400px;
-    height: 200px; }
-    .graphs--three svg.weekday-avg rect.pos-avg {
-      fill: #69FF8D; }
-    .graphs--three svg.weekday-avg rect.neg-avg {
-      fill: #FF003B; }
-    .graphs--three svg.weekday-avg .axis line,
-    .graphs--three svg.weekday-avg .axis path {
-      stroke: #fff; }
-    .graphs--three svg.weekday-avg .mid-axis {
-      stroke: #716cdc; }
-  .graphs--four svg.abs-weekday-avg {
-    width: 50%;
-    min-width: 400px;
-    height: 200px; }
-    .graphs--four svg.abs-weekday-avg rect.bar {
-      fill: #69FF8D; }
-    .graphs--four svg.abs-weekday-avg .axis line,
-    .graphs--four svg.abs-weekday-avg .axis path {
-      stroke: #fff; }
-    .graphs--four svg.abs-weekday-avg .mid-axis {
-      stroke: #716cdc; }
-  .graphs--five svg.weekday-after-hrs-avg {
-    width: 50%;
-    min-width: 400px;
-    height: 200px; }
-    .graphs--five svg.weekday-after-hrs-avg rect.pos-avg {
-      fill: #69FF8D; }
-    .graphs--five svg.weekday-after-hrs-avg rect.neg-avg {
-      fill: #FF003B; }
-    .graphs--five svg.weekday-after-hrs-avg .axis line,
-    .graphs--five svg.weekday-after-hrs-avg .axis path {
-      stroke: #fff; }
-    .graphs--five svg.weekday-after-hrs-avg .mid-axis {
-      stroke: #716cdc; }
-  .graphs--six svg.weekday-abs-after-hrs-avg {
-    width: 50%;
-    min-width: 400px;
-    height: 200px; }
-    .graphs--six svg.weekday-abs-after-hrs-avg rect.bar {
-      fill: #69FF8D; }
-    .graphs--six svg.weekday-abs-after-hrs-avg .axis line,
-    .graphs--six svg.weekday-abs-after-hrs-avg .axis path {
-      stroke: #fff; }
-    .graphs--six svg.weekday-abs-after-hrs-avg .mid-axis {
-      stroke: #716cdc; }
-  .graphs--seven svg.daily-pct-change {
-    width: 50%;
-    min-width: 400px;
-    height: 200px; }
-    .graphs--seven svg.daily-pct-change .axis line,
-    .graphs--seven svg.daily-pct-change .axis path {
-      stroke: #fff; }
-    .graphs--seven svg.daily-pct-change path {
-      stroke: #716cdc; }
-  .graphs--eight svg.daily-pct-change--bar {
-    width: 50%;
-    min-width: 400px;
-    height: 200px; }
-    .graphs--eight svg.daily-pct-change--bar rect.pos-avg {
-      fill: #69FF8D; }
-    .graphs--eight svg.daily-pct-change--bar rect.neg-avg {
-      fill: #FF003B; }
-    .graphs--eight svg.daily-pct-change--bar .axis line,
-    .graphs--eight svg.daily-pct-change--bar .axis path {
-      stroke: #fff; }
-    .graphs--eight svg.daily-pct-change--bar .mid-axis {
-      stroke: #716cdc; }
-  .graphs--one, .graphs--two, .graphs--three, .graphs--four, .graphs--five, .graphs--six, .graphs--seven, .graphs--eight {
-    border: 1px solid #fff;
-    margin: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; }
-    .graphs--one .graph-title, .graphs--two .graph-title, .graphs--three .graph-title, .graphs--four .graph-title, .graphs--five .graph-title, .graphs--six .graph-title, .graphs--seven .graph-title, .graphs--eight .graph-title {
-      color: #716cdc;
-      font-size: 20px;
-      margin-bottom: 20px; }
-    .graphs--one .graph-label, .graphs--two .graph-label, .graphs--three .graph-label, .graphs--four .graph-label, .graphs--five .graph-label, .graphs--six .graph-label, .graphs--seven .graph-label, .graphs--eight .graph-label {
-      fill: #f0424e; }
+  grid-area: graphs; }
+
+.chart {
+  grid-area: chart; }
+
+.container {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-areas: "header" "search" "graphs"; }
+  .container.hidden {
+    display: none; }
+  .container .graphs {
+    display: grid;
+    grid-template-areas: "chart_1" "chart_2" "chart_3" "chart_4" "chart_5" "chart_6" "chart_7" "chart_8"; }
+    .container .graphs.hidden {
+      display: none; }
+    .container .graphs chart_1 {
+      grid-area: chart_1; }
+    .container .graphs chart_2 {
+      grid-area: chart_2; }
+    .container .graphs chart_3 {
+      grid-area: chart_3; }
+    .container .graphs chart_4 {
+      grid-area: chart_4; }
+    .container .graphs chart_5 {
+      grid-area: chart_5; }
+    .container .graphs chart_6 {
+      grid-area: chart_6; }
+    .container .graphs chart_7 {
+      grid-area: chart_7; }
+    .container .graphs chart_8 {
+      grid-area: chart_8; }
+    .container .graphs svg {
+      margin: 50px auto;
+      box-sizing: border-box;
+      width: 90%;
+      min-height: 200px; }
+      .container .graphs svg .axis line,
+      .container .graphs svg .axis path {
+        stroke: #fff; }
+      .container .graphs svg .mid-axis {
+        stroke: #f0eff9; }
+      .container .graphs svg.line-chart path {
+        stroke: #f0eff9; }
+      .container .graphs svg.bar-chart rect.bar {
+        fill: #69FF8D; }
+      .container .graphs svg.bar-chart rect.pos-avg {
+        fill: #69FF8D; }
+      .container .graphs svg.bar-chart rect.neg-avg {
+        fill: #FF003B; }
+      .container .graphs svg.bar-chart rect:hover {
+        fill: #f0eff9; }
+
+.tooltip {
+  background: rgba(255, 255, 255, 0.75);
+  padding: 5px 10px;
+  border-radius: 5px; }
+
+.graph-label {
+  fill: #f0424e; }
 
 text {
   letter-spacing: 1.5px;
   stroke: none;
   fill: #fff;
   font-size: 12px; }
+
+@media only screen and (min-width: 768px) {
+  .container .graphs {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "chart_1" "chart_2" "chart_3" "chart_4" "chart_5" "chart_6" "chart_7" "chart_8"; } }

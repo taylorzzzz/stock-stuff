@@ -50,6 +50,8 @@ function getStockInfo(url) {
 
             //showStockInfo(stock);
 
+            stock.clearGraphs();
+
             stock.graphStockPrice();
 
             stock.graphAvgAfter();
@@ -62,7 +64,7 @@ function getStockInfo(url) {
 
             stock.graphAbsAfterHoursWeekdays();
 
-            stock.graphDailyPctChange();
+            // stock.graphDailyPctChange();
 
             stock.graphDailyPctChangeBar();
             
