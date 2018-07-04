@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 const API_KEY = require('./config/API_KEY.js')
 
