@@ -887,5 +887,7 @@ module.exports = class Stock {
 }
 
 /*
+    So at this point we have our graphs. One problem might be 
+    that we don't have enough info about the stock itself 
     
 */
