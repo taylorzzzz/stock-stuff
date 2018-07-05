@@ -46,27 +46,36 @@ function getStockInfo(url) {
     axios.get(url)
         .then((res) => {
 
-            const stock = new Stock(res.data);
+            const data = res.data;
 
-            //showStockInfo(stock);
+            if (data.Error) {
+                // There was an invalid API call.
+                console.log(res);
+                console.log('there was an error with the API call');
+                
+            } else {
+                //showStockInfo(stock);
+                const stock = new Stock(data);
+                
+                stock.clearGraphs();
 
-            stock.clearGraphs();
+                stock.graphStockPrice();
 
-            stock.graphStockPrice();
+                stock.graphAvgAfter();
 
-            stock.graphAvgAfter();
+                stock.graphWeekdays();
 
-            stock.graphWeekdays();
+                stock.graphAbsWeekdays();
 
-            stock.graphAbsWeekdays();
+                stock.graphAfterHoursWeekdays();
 
-            stock.graphAfterHoursWeekdays();
+                stock.graphAbsAfterHoursWeekdays();
 
-            stock.graphAbsAfterHoursWeekdays();
+                // stock.graphDailyPctChange();
 
-            // stock.graphDailyPctChange();
-
-            stock.graphDailyPctChangeBar();
+                stock.graphDailyPctChangeBar();
+            }
+            
             
         })
         .catch((err) => {

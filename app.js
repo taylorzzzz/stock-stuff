@@ -16,34 +16,39 @@ app.get('/search', (req, res) => {
     
     axios.get(url)
         .then(response => {
-
+            
             const days = [];
 
             const data = response.data['Time Series (Daily)'];
 
-            for (let day in data) {
+            if (!data) { res.json({'Error': 'Invalid API call'})}
+            else {
 
-                days.push({
+                for (let day in data) {
 
-                    day: new Date(day),
-                    open: +data[day]['1. open'],
-                    high: +data[day]['2. high'],
-                    low: +data[day]['3. low'],
-                    close: +data[day]['4. close'],
-                    volume: +data[day]['5. volume']
-                })
+                    days.push({
 
+                        day: new Date(day),
+                        open: +data[day]['1. open'],
+                        high: +data[day]['2. high'],
+                        low: +data[day]['3. low'],
+                        close: +data[day]['4. close'],
+                        volume: +data[day]['5. volume']
+                    })
+
+                }
+
+                const stockObj = {
+                    meta: response.data['Meta Data'],
+                    data: days
+                } 
+
+                res.json(stockObj);
             }
-
-            const stockObj = {
-                meta: response.data['Meta Data'],
-                data: days
-            } 
-
-            res.json(stockObj);
             
         })
         .catch(err => {
+            console.log('err');
             console.log(err);
         })
 

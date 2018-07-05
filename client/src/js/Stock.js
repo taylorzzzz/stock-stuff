@@ -191,8 +191,8 @@ module.exports = class Stock {
         this.days = days;
         this.num_up_days = numUpDays;
         this.num_down_days = numDownDays;
-        this.avg_pct_change_after_up = avgAfterUp.toFixed(2) + "%";
-        this.avg_pct_change_after_down = avgAfterDown.toFixed(2) + "%";
+        this.avg_pct_change_after_up = avgAfterUp + "%";
+        this.avg_pct_change_after_down = avgAfterDown + "%";
         this.symbol = data.meta['2. Symbol'];
         this.max_close = closeMax;
         this.min_close = closeMin;
@@ -252,7 +252,6 @@ module.exports = class Stock {
     }
 
     graphAvgAfter() {
-
         const avgAfterUp = +this.avg_pct_change_after_up.replace('%', '');
         const avgAfterDown = +this.avg_pct_change_after_down.replace('%', '');
         const data = [
@@ -265,6 +264,7 @@ module.exports = class Stock {
                 'value': avgAfterDown
             }
         ];
+        console.log(data);
 
         const svg = d3.select('svg.avg-after');
 
@@ -334,7 +334,7 @@ module.exports = class Stock {
                     : 'pos-avg'
             })
             .on('mouseover', (d) => { 
-                return tooltip.style("visibility", "visible").text(d.value + '%');
+                return tooltip.style("visibility", "visible").text(d.value.toFixed(2) + '%');
             })
             .on('mousemove', (d) => { 
                 return tooltip.style("top", `${event.pageY - 30}px`)
