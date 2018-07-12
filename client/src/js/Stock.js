@@ -12,9 +12,11 @@ module.exports = class Stock {
         // Clear any preexisting charts after user loads up a new stock.
         d3.selectAll("svg > *").remove();
         
-        // Also remove the hidden class which hides the empty graphs 
+        // Remove the hidden class which hides the empty graphs 
         // when the user first comes to the page
         document.querySelector('.graphs').classList.remove('hidden');
+        // Also remove hidden class from the footer
+        document.querySelector('footer').classList.remove('hidden');
     }
 
     getStats(data) {
@@ -264,7 +266,6 @@ module.exports = class Stock {
                 'value': avgAfterDown
             }
         ];
-        console.log(data);
 
         const svg = d3.select('svg.avg-after');
 
@@ -886,8 +887,3 @@ module.exports = class Stock {
 
 }
 
-/*
-    So at this point we have our graphs. One problem might be 
-    that we don't have enough info about the stock itself 
-    
-*/

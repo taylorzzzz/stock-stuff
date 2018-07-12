@@ -12,7 +12,7 @@ body {
     background: $color-bg;
 }
 
-.header {
+header {
     color: $color-primary;
     font-size: 80px;
     text-align: center;
@@ -85,7 +85,9 @@ body {
 .header {grid-area: header}
 .search {grid-area: search}
 .graphs {grid-area: graphs}
+footer {grid-area: footer}
 .chart {grid-area: chart}
+
 
 .container {
     display: grid;
@@ -93,7 +95,8 @@ body {
     grid-template-areas:
      "header"
      "search"
-     "graphs";
+     "graphs"
+     "footer";
 
     &.hidden {
         display: none;
@@ -156,6 +159,22 @@ body {
                     }
                 }
             }
+        }
+    }
+
+    footer {
+
+        margin: auto;
+        color: lighten($color-bg, 50%);
+        display: block;
+
+        a {
+            color: $color-primary;
+            text-decoration: none;
+        }
+
+        &.hidden {
+            display: none;
         }
     }
     

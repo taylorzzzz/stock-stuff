@@ -9,7 +9,7 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #4a3EaB; }
 
-.header {
+header {
   color: #f0424e;
   font-size: 80px;
   text-align: center; }
@@ -70,13 +70,16 @@ body {
 .graphs {
   grid-area: graphs; }
 
+footer {
+  grid-area: footer; }
+
 .chart {
   grid-area: chart; }
 
 .container {
   display: grid;
   grid-gap: 1em;
-  grid-template-areas: "header" "search" "graphs"; }
+  grid-template-areas: "header" "search" "graphs" "footer"; }
   .container.hidden {
     display: none; }
   .container .graphs {
@@ -120,6 +123,15 @@ body {
         fill: #FF003B; }
       .container .graphs svg.bar-chart rect:hover {
         fill: #f0eff9; }
+  .container footer {
+    margin: auto;
+    color: #f0eff9;
+    display: block; }
+    .container footer a {
+      color: #f0424e;
+      text-decoration: none; }
+    .container footer.hidden {
+      display: none; }
 
 .tooltip {
   background: rgba(255, 255, 255, 0.75);
