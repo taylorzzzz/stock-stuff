@@ -19,6 +19,26 @@ module.exports = class Stock {
         document.querySelector('footer').classList.remove('hidden');
     }
 
+    drawGraphs() {
+
+        this.clearGraphs();
+
+        this.graphStockPrice();
+
+        this.graphAvgAfter();
+
+        this.graphWeekdays();
+
+        this.graphAbsWeekdays();
+
+        this.graphAfterHoursWeekdays();
+
+        this.graphAbsAfterHoursWeekdays();
+
+        this.graphDailyPctChangeBar();
+
+    }
+
     setName() {
         const name = document.querySelector('.graphs__header--name');
 

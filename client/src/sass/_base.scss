@@ -20,7 +20,7 @@ header {
     text-transform: capitalize;
 }
 .ticker__search {
-    padding: 50px 0px;
+    padding: 50px 0px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,13 +105,21 @@ header {
 }
 
 .errMessage {
+    text-align: center;
+    color: $color-primary;
+    font-size: 12px;
     display: none;
+
+    &.show {
+        display: block;
+    }
 }
 
 
 .header {grid-area: header}
 .search {grid-area: search}
 .loader {grid-area: loader}
+.errMsg {grid-area: errMsg}
 .graphs {grid-area: graphs}
 footer {grid-area: footer}
 .chart {grid-area: chart}
@@ -125,6 +133,7 @@ footer {grid-area: footer}
     grid-template-areas:
      "header"
      "search"
+     "errMsg"
      "loader"
      "graphs"
      "footer";
@@ -160,9 +169,9 @@ footer {grid-area: footer}
         chart_8 { grid-area: chart_8}
         
         svg {
-            //border: 1px solid red;
             margin: 50px auto;
             box-sizing: border-box;
+            width: 90%;
             max-width: 90%;
             min-height: 200px;
 
