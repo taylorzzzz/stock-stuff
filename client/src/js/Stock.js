@@ -19,6 +19,12 @@ module.exports = class Stock {
         document.querySelector('footer').classList.remove('hidden');
     }
 
+    setName() {
+        const name = document.querySelector('.graphs__header--name');
+
+        name.innerHTML = this.symbol;
+    }
+
     getStats(data) {
         
         const days = data.data;

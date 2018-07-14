@@ -11,9 +11,13 @@ import axios from 'axios';
 
     searchBtn.addEventListener('click', () => {
         
+
         const inputVal = searchInput.value;
         const size = 'compact';
         const url = `/search?symbol=${inputVal}&size=${size}`;
+
+        // start the loader
+        initLoader();
 
         getStockInfo(url);
         
@@ -21,30 +25,24 @@ import axios from 'axios';
 })()
 
 
-function showStockInfo(stock) {
-   const name = document.querySelector('.stock-info__name--value'),
-        upDays = document.querySelector('.stock-info__up--value'),
-        downDays = document.querySelector('.stock-info__down--value'),
-        upDaysAVG = document.querySelector('.stock-info__up-avg--value'),
-        downDaysAVG = document.querySelector('.stock-info__down-avg--value'),
-        timePeriod = document.querySelector('.stock-info__time-period--value'),
-        upDays2 = document.querySelector('.graphs--one .num-up-days'),
-        downDays2 = document.querySelector('.graphs--one .num-down-days');
+function initLoader() {
+    const loader = document.querySelector('.loader');
     
-    name.innerHTML = stock.symbol;
-    upDays.innerHTML = stock.num_up_days;
-    downDays.innerHTML = stock.num_down_days;
-    upDaysAVG.innerHTML = stock.avg_pct_change_after_up;
-    downDaysAVG.innerHTML = stock.avg_pct_change_after_down;
-    timePeriod.innerHTML = stock.first_day + ' - ' + stock.last_day;
-    upDays2.innerHTML = stock.num_up_days;
-    downDays2.innerHTML = stock.num_down_days;
+    loader.classList.add('active');
+}
+function removeLoader() {
+    const loader = document.querySelector('.loader');
+    
+    loader.classList.remove('active');
 }
 
 function getStockInfo(url) {
 
     axios.get(url)
         .then((res) => {
+
+            // Hide loader
+            removeLoader();
 
             const data = res.data;
 
@@ -54,10 +52,11 @@ function getStockInfo(url) {
                 console.log('there was an error with the API call');
                 
             } else {
-                //showStockInfo(stock);
                 const stock = new Stock(data);
                 
                 stock.clearGraphs();
+                
+                stock.setName();
 
                 stock.graphStockPrice();
 

@@ -64,26 +64,25 @@ header {
     }
 }
 
-.stock-info {
-    font-size: 20px;
-    font-weight: 400;
-    color: $color-white;
+.loader {
 
-    > div {
-        display: flex;
+    opacity: 0;
+    margin: auto;
+
+    &.active {
+        opacity: 1;
+        animation: loadAnimation .6s infinite;
     }
+}
 
-    label {
-        margin-right: 20px;
-        font-weight: 200;
-        color: lighten($color-bg, 50%);
-    }
-
+.errMessage {
+    display: none;
 }
 
 
 .header {grid-area: header}
 .search {grid-area: search}
+.loader {grid-area: loader}
 .graphs {grid-area: graphs}
 footer {grid-area: footer}
 .chart {grid-area: chart}
@@ -95,6 +94,7 @@ footer {grid-area: footer}
     grid-template-areas:
      "header"
      "search"
+     "loader"
      "graphs"
      "footer";
 
@@ -105,6 +105,7 @@ footer {grid-area: footer}
     .graphs {
         display: grid;
         grid-template-areas: 
+            "chart_header"
             "chart_1"
             "chart_2"
             "chart_3"
@@ -116,6 +117,7 @@ footer {grid-area: footer}
 
         &.hidden { display: none }
 
+        &__header {grid-area: chart_header}
         chart_1 { grid-area: chart_1}
         chart_2 { grid-area: chart_2}
         chart_3 { grid-area: chart_3}
@@ -160,6 +162,17 @@ footer {grid-area: footer}
                 }
             }
         }
+
+        &__header {
+            text-align: center;
+            font-size: 14px;
+            color: lighten($color-bg, 50%);
+
+            &--name {
+                color:$color-primary;
+                font-size: 64px;
+            }
+        }
     }
 
     footer {
@@ -200,9 +213,21 @@ text {
     .container .graphs {
         grid-template-columns: 1fr 1fr;
         grid-template-areas: 
-            "chart_1" "chart_2"
-            "chart_3" "chart_4"
-            "chart_5" "chart_6"
-            "chart_7" "chart_8";
+            "chart_header chart_header"
+            "chart_1 chart_2"
+            "chart_3 chart_4"
+            "chart_5 chart_6"
+            "chart_7 chart_8";
+    }
+}
+
+
+
+@keyframes loadAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

@@ -50,22 +50,24 @@ header {
     .ticker__search--btn:hover {
       background: #f8a1a7; }
 
-.stock-info {
-  font-size: 20px;
-  font-weight: 400;
-  color: #fff; }
-  .stock-info > div {
-    display: flex; }
-  .stock-info label {
-    margin-right: 20px;
-    font-weight: 200;
-    color: #f0eff9; }
+.loader {
+  opacity: 0;
+  margin: auto; }
+  .loader.active {
+    opacity: 1;
+    animation: loadAnimation .6s infinite; }
+
+.errMessage {
+  display: none; }
 
 .header {
   grid-area: header; }
 
 .search {
   grid-area: search; }
+
+.loader {
+  grid-area: loader; }
 
 .graphs {
   grid-area: graphs; }
@@ -79,14 +81,16 @@ footer {
 .container {
   display: grid;
   grid-gap: 1em;
-  grid-template-areas: "header" "search" "graphs" "footer"; }
+  grid-template-areas: "header" "search" "loader" "graphs" "footer"; }
   .container.hidden {
     display: none; }
   .container .graphs {
     display: grid;
-    grid-template-areas: "chart_1" "chart_2" "chart_3" "chart_4" "chart_5" "chart_6" "chart_7" "chart_8"; }
+    grid-template-areas: "chart_header" "chart_1" "chart_2" "chart_3" "chart_4" "chart_5" "chart_6" "chart_7" "chart_8"; }
     .container .graphs.hidden {
       display: none; }
+    .container .graphs__header {
+      grid-area: chart_header; }
     .container .graphs chart_1 {
       grid-area: chart_1; }
     .container .graphs chart_2 {
@@ -123,6 +127,13 @@ footer {
         fill: #FF003B; }
       .container .graphs svg.bar-chart rect:hover {
         fill: #f0eff9; }
+    .container .graphs__header {
+      text-align: center;
+      font-size: 14px;
+      color: #f0eff9; }
+      .container .graphs__header--name {
+        color: #f0424e;
+        font-size: 64px; }
   .container footer {
     margin: auto;
     color: #f0eff9;
@@ -150,4 +161,10 @@ text {
 @media only screen and (min-width: 768px) {
   .container .graphs {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "chart_1" "chart_2" "chart_3" "chart_4" "chart_5" "chart_6" "chart_7" "chart_8"; } }
+    grid-template-areas: "chart_header chart_header" "chart_1 chart_2" "chart_3 chart_4" "chart_5 chart_6" "chart_7 chart_8"; } }
+
+@keyframes loadAnimation {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
