@@ -1,8 +1,13 @@
 <html>
     
     <head>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Stock App</title>
+        <title>Stocks</title>
+
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
         <link href="build/css/style.css" rel="stylesheet" />
 
@@ -12,7 +17,7 @@
 
         <div class="container">
 
-            <header class="header">STOCK MARKET</header>
+            <header class="header">Stock Charts</header>
 
             <div class="ticker__search search">
 
@@ -26,7 +31,12 @@
 
             </div>
 
-            <div class="loader">Fetching Data...</div>
+            <div class="loader">
+                <p>Fetching Data</p>
+                <svg viewbox="0 0 100 100">
+                    <circle cx="50" cy="50" r="50"/></circle>
+                </svg>
+            </div>
 
             <div class="errMessage">Unable to retrieve data</div>
 

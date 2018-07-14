@@ -10,7 +10,7 @@ module.exports = class Stock {
 
     clearGraphs() {
         // Clear any preexisting charts after user loads up a new stock.
-        d3.selectAll("svg > *").remove();
+        d3.selectAll(".graphs svg > *").remove();
         
         // Remove the hidden class which hides the empty graphs 
         // when the user first comes to the page

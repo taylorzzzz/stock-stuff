@@ -10,20 +10,23 @@ body {
     font-size: 62.5%;
     font-family: 'Poppins', sans-serif;
     background: $color-bg;
+    width: 100%;
 }
 
 header {
     color: $color-primary;
-    font-size: 80px;
+    font-size: 20px;
     text-align: center;
+    text-transform: capitalize;
 }
 .ticker__search {
-    //background: darken($color-white, 10%);
-    padding: 50px;
+    padding: 50px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 200;
+    max-width: 100%;
+    box-sizing: border-box;
 
     &--input {
         margin: 20px;
@@ -65,14 +68,40 @@ header {
 }
 
 .loader {
-
     opacity: 0;
     margin: auto;
+    position: relative;
+    width: 150px;
+    p {
+        text-align: center;
+        color: lighten($color-bg, 50%);
+        margin-bottom: 10px;
+        opacity: .5;
+    }
+    svg {
+        width: 50px;
+        display: block;
+        margin: auto;
+        circle {
+            fill: none;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: lighten($color-bg, 50%);
+            stroke-dasharray: 250px;
+            stroke-dashoffset: 250px;
+        }
+    }
 
     &.active {
         opacity: 1;
-        animation: loadAnimation .6s infinite;
+        svg {
+            circle {
+                animation: loadAnimation 1s ease-in infinite;
+            }
+        }
     }
+
+    
 }
 
 .errMessage {
@@ -89,6 +118,8 @@ footer {grid-area: footer}
 
 
 .container {
+    position: relative;
+    width: 100%;
     display: grid;
     grid-gap: 1em;
     grid-template-areas:
@@ -103,6 +134,7 @@ footer {grid-area: footer}
     }
 
     .graphs {
+        width: 100%;
         display: grid;
         grid-template-areas: 
             "chart_header"
@@ -131,7 +163,7 @@ footer {grid-area: footer}
             //border: 1px solid red;
             margin: 50px auto;
             box-sizing: border-box;
-            width: 90%;
+            max-width: 90%;
             min-height: 200px;
 
             .axis line,
@@ -225,9 +257,12 @@ text {
 
 @keyframes loadAnimation {
     0% {
-        opacity: 0;
+    }
+    50% {
+        
     }
     100% {
-        opacity: 1;
+        stroke-dasharray: 250px;
+        stroke-dashoffset: 0px;
     }
-}
+  }
