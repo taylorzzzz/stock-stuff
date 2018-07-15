@@ -6,9 +6,25 @@ import axios from 'axios';
 // into the search box.
 (function() {
 
-    const searchBtn = document.querySelector('.ticker__search--btn');
-    const searchInput = document.querySelector('.ticker__search--input');
+    const form = document.querySelector('form');
 
+    form.addEventListener('submit', (e) => {
+        
+        e.preventDefault();
+
+        const inputVal = e.target[0].value;
+        const size = 'compact';
+        const url = `/search?symbol=${inputVal}&size=${size}`;
+
+        initLoader();
+
+        removeErrMsg();
+
+        getStockInfo(url);
+
+    });
+    
+/*
     searchBtn.addEventListener('click', () => {
         
 
@@ -24,6 +40,7 @@ import axios from 'axios';
         getStockInfo(url);
         
     })
+*/
 
 })()
 

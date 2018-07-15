@@ -33,12 +33,14 @@
             </header>
 
             <div class="ticker__search search">
+            
+                <form>
+                    <label class="ticker__search--label"for="ticker">Ticker</label>
 
-                <label class="ticker__search--label"for="ticker">Ticker</label>
+                    <input type="text" class="ticker__search--input" placeholder="NFLX">
 
-                <input type="text" class="ticker__search--input" placeholder="NFLX">
-
-                <button class="ticker__search--btn">Search</button>
+                    <input type="submit" class="ticker__search--btn" value="Search"> </input>
+                </form>
 
                 <div class="ticker__search--results"></div>
 
