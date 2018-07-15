@@ -215,6 +215,7 @@ footer {grid-area: footer}
             &--name {
                 color:$color-primary;
                 font-size: 64px;
+                text-transform: uppercase;
             }
         }
     }

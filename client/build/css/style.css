@@ -171,7 +171,8 @@ footer {
       color: #f0eff9; }
       .container .graphs__header--name {
         color: #f0424e;
-        font-size: 64px; }
+        font-size: 64px;
+        text-transform: uppercase; }
   .container footer {
     margin: auto;
     color: #f0eff9;
