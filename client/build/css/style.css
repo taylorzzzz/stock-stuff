@@ -11,10 +11,13 @@ body {
   width: 100%; }
 
 header {
+  margin-top: 10px;
   color: #f0424e;
-  font-size: 20px;
+  font-size: 30px;
   text-align: center;
-  text-transform: capitalize; }
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-around; }
 
 .ticker__search {
   padding: 50px 0px 0px;

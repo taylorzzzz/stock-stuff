@@ -14,10 +14,13 @@ body {
 }
 
 header {
+    margin-top: 10px;
     color: $color-primary;
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
     text-transform: capitalize;
+    display: flex;
+    justify-content: space-around;
 }
 .ticker__search {
     padding: 50px 0px 0px;
